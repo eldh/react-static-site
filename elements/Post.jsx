@@ -2,11 +2,11 @@ var Moment = require('./Moment.jsx'),
   Paths = require('./PathsMixin'),
   React = require('react'),
   Router = require('react-router');
-    
+
 var Post = React.createClass({
-  
+
   mixins: [Router.State, Paths],
-  
+
   render: function() {
     var content = this.getPost(),
       published = this.getPathMeta('published'),

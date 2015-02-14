@@ -1,6 +1,6 @@
 var moment = require('moment'),
   React = require('react');
-    
+
 var Moment = React.createClass({
 
   getDefaultProps: function() {

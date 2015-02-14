@@ -1,79 +1,120 @@
 var webpack = require('webpack');
+var RHLMatches = /View.coffee|views\//;
 
 var outputPath = __dirname + '/dev',
-  outputPublicPath =  'http://localhost:3000/scripts/';
+outputPublicPath =  'http://localhost:3000/scripts/';
 
 var resolveCommon = {
-  // Allow to omit extensions when requiring these files
-  extensions: ['', '.js', '.jsx']
+	// Allow to omit extensions when requiring these files
+	extensions: ['', '.js', '.jsx', '.coffee']
 };
 
 var moduleCommon = {
-  loaders: [
-    // Pass *.css files through css-loader and style-loader transforms
-    { test: /\.css$/, loader: 'style!css' },
-    // Pass *.jsx files through jsx-loader transform
-    { test: /\.jsx$/, loaders: ['react-hot', 'jsx'] },
-    { test: /\.html$/, loader: 'raw' },
-    { test: /\.md$/, loader: 'raw!markdown' },
-  ]
-};
+	loaders: [
+		// Pass *.css files through css-loader and style-loader transforms
+		{ test: /\.css$/, loader: 'style!css' },
+		// Pass *.jsx files through jsx-loader transform
+		{ test: /\.scss$/, loaders: [
+			'style-loader',
+			'css-loader',
+			'autoprefixer-loader?{browsers:["last 2 version", "ie 10", "Android 4"]}',
+			'sass-loader'
+			]},
+			{ test: /\.jsx$/, loaders: ['react-hot', 'jsx'] },
+			{
+				test: /\.coffee$/,
+				exclude: RHLMatches,
+				loader: 'jshint-loader!coffee-loader'
+			},	// enable post compile jshint, rules/flags at the bottom
+			{ test: /\.html$/, loader: 'raw' },
+			{ test: RHLMatches, loader: 'react-hot!coffee-loader' },
+			{ test: /\.md$/, loader: 'raw!markdown' },
+			]
+		};
 
-module.exports = [
-  {
-    name: 'browser',
-    // Entry point for static analyzer:
-    entry: [
-      'webpack-dev-server/client?http://localhost:3000',
-      'webpack/hot/dev-server',
-      './dev/entry.jsx'
-    ],
+		module.exports = [
+		{
+			name: 'browser',
+		// Entry point for static analyzer:
+		entry: [
+		'webpack-dev-server/client?http://localhost:3000',
+		'webpack/hot/dev-server',
+		'./dev/entry.jsx'
+		],
 
-    output: {
-      // Where to put build results when doing production builds:
-      path: outputPath,
+		output: {
+			// Where to put build results when doing production builds:
+			path: outputPath,
 
-      // JS filename you're going to use in HTML
-      filename: 'bundle.js',
+			// JS filename you're going to use in HTML
+			filename: 'bundle.js',
 
-      // Path you're going to use in HTML
-      publicPath: outputPublicPath,
-    },
+			// Path you're going to use in HTML
+			publicPath: outputPublicPath,
+		},
 
-    plugins: [
-      new webpack.HotModuleReplacementPlugin()
-    ],
+		plugins: [
+		new webpack.HotModuleReplacementPlugin()
+		],
+		jshint: {
+			bitwise: false,
+			boss: true,
+			curly: false,
+			eqnull: true,
+			expr: true,
+			newcap: false,
+			quotmark: false,
+			shadow: true,
+			strict: false,
+			sub: true,
+			undef: true,
+			unused: 'vars'
+		},
 
-    resolve: resolveCommon,
+		resolve: resolveCommon,
 
-    module: moduleCommon
-  },
-  {
-    name: 'server',
+		module: moduleCommon
+	},
+	{
+		name: 'server',
 
-    target: 'node',
+		target: 'node',
 
-    // Entry point for static analyzer:
-    entry: {
-      bundlePage: './dev/page.jsx',
-      bundleStaticPage: './dev/staticPage.jsx'
-    },
+		// Entry point for static analyzer:
+		entry: {
+			bundlePage: './dev/page.jsx',
+			bundleStaticPage: './dev/staticPage.jsx'
+		},
 
-    output: {
-      // Where to put build results when doing production builds:
-      path: outputPath,
+		output: {
+			// Where to put build results when doing production builds:
+			path: outputPath,
 
-      // JS filename you're going to use in HTML
-      filename: '[name].js',
+			// JS filename you're going to use in HTML
+			filename: '[name].js',
 
-      // Path you're going to use in HTML
-      publicPath: outputPublicPath,
+			// Path you're going to use in HTML
+			publicPath: outputPublicPath,
 
-      libraryTarget: "commonjs2"
-    },
+			libraryTarget: "commonjs2"
+		},
+		jshint: {
+			bitwise: false,
+			boss: true,
+			curly: false,
+			eqnull: true,
+			expr: true,
+			newcap: false,
+			quotmark: false,
+			shadow: true,
+			strict: false,
+			sub: true,
+			undef: true,
+			unused: 'vars'
+		},
 
-    resolve: resolveCommon,
+		resolve: resolveCommon,
 
-    module: moduleCommon
-  }
-];
+		module: moduleCommon
+	}
+	];

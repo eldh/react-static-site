@@ -4,11 +4,11 @@ var React = require('react'),
   Moment  = require('./Moment.jsx'),
   Paths = require('./PathsMixin'),
   _ = require('underscore');
-    
+
 var Blog = React.createClass({
-  
+
   mixins: [Router.State, Paths],
-  
+
   render: function() {
     var self = this,
       title = this.getPathMeta('title'),
@@ -26,7 +26,7 @@ var Blog = React.createClass({
       <div>
         <h1>{title}</h1>
         <ul style={ulStyle}>
-        { 
+        {
           _.map(this.getAllPosts(), function(post, key) {
             return <li key={key}>
               <div style={titleStyle}>
