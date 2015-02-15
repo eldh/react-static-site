@@ -85,6 +85,7 @@ module.exports = [
 		entry: {
 			// bundleCss: './scss/main.scss',
 			bundlePage: './dev/page.jsx',
+			bundleStaticRss: './dev/staticRss.coffee',
 			bundleStaticPage: './dev/staticPage.jsx'
 		},
 

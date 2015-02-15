@@ -26,7 +26,10 @@ var Paths = {
   },
 
   getPost: function() {
-    return paths.postForPath(this.context.getCurrentParams().post);
+     return paths.postForPath(this.context.getCurrentParams().post);
+  },
+  getPostForPath: function(path) {
+    return paths.postForPath(path);
   },
 
   getPreviewForPost: function(post) {

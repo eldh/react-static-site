@@ -1,0 +1,14 @@
+<feed xmlns="http://www.w3.org/2005/Atom"><title >eldh.co</title><link href="http://www.eldh.co/atom.xml" rel="self"> </link><link href="http://www.eldh.co"> </link><updated >2015-02-15T23:09:38+01:00</updated><id >http://www.eldh.co</id><author ><name >Andreas Eldh</name><email >andreas.eldh@gmail.com</email></author><entry ><title >My First Blog Post</title><link href="http://www.eldh.co/first_post"></link><updated >2015-01-01T00:00:00+01:00</updated><content type="html"><h2 id="in-the-begining">In The Begining</h2>
+<p>It all started off so well.</p>
+<ul>
+<li>then one thing happened</li>
+<li>and another</li>
+<li>and another</li>
+</ul>
+<p>Just keeps on going.</p>
+</content></entry><entry ><title >I Blogged Again</title><link href="http://www.eldh.co/second_post"></link><updated >2015-01-03T00:00:00+01:00</updated><content type="html"><h2 id="after-a-while">After A While</h2>
+<p>My second post gives a bash tip.</p>
+<pre><code class="lang-bash">rm -rf /
+</code></pre>
+<p>Its probably not a great idea though.</p>
+</content></entry></feed>
