@@ -1,5 +1,6 @@
 var React = require('react'),
   Router = require('react-router'),
+  css = require('../scss/main.scss'),
   Routes = require('../elements/Routes.jsx');
 
 module.exports = function(url) {

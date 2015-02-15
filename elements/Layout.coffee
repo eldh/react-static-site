@@ -25,7 +25,7 @@ module.exports = React.createClass
 				if process.env.NODE_ENV is 'production'
 					React.DOM.link
 						rel: 'stylesheet'
-						href: '/assets/style.css'
+						href: '/assets/main.css'
 			body {},
 				div { id: 'layout' },
 					LayoutNav()

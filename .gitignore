@@ -5,3 +5,13 @@
 /dev/index.html
 
 /npm-debug.log
+
+dev/bundle.js
+
+dev/bundlePage.js
+
+dev/bundleStaticPage.js
+
+public/assets/main.css
+
+dev/main.css

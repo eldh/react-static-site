@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var RHLMatches = /View.coffee|views\//;
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var outputPath = __dirname + '/dev',
 outputPublicPath =  'http://localhost:3000/scripts/';
@@ -12,29 +13,27 @@ var resolveCommon = {
 var moduleCommon = {
 	loaders: [
 		// Pass *.css files through css-loader and style-loader transforms
-		{ test: /\.css$/, loader: 'style!css' },
+		// { test: /\.css$/, loader: 'style!css' },
 		// Pass *.jsx files through jsx-loader transform
-		{ test: /\.scss$/, loaders: [
+		{ test: /\.scss$/, loader: ExtractTextPlugin.extract(
 			'style-loader',
-			'css-loader',
-			'autoprefixer-loader?{browsers:["last 2 version", "ie 10", "Android 4"]}',
-			'sass-loader'
-			]},
-			{ test: /\.jsx$/, loaders: ['react-hot', 'jsx'] },
-			{
-				test: /\.coffee$/,
-				exclude: RHLMatches,
-				loader: 'jshint-loader!coffee-loader'
-			},	// enable post compile jshint, rules/flags at the bottom
-			{ test: /\.html$/, loader: 'raw' },
-			{ test: RHLMatches, loader: 'react-hot!coffee-loader' },
-			{ test: /\.md$/, loader: 'raw!markdown' },
-			]
-		};
-
-		module.exports = [
+			'css-loader!autoprefixer-loader?{browsers:["last 2 version", "ie 10", "Android 4"]}!sass-loader'
+		) },
+		{ test: /\.jsx$/, loaders: ['react-hot', 'jsx'] },
 		{
-			name: 'browser',
+			test: /\.coffee$/,
+			exclude: RHLMatches,
+			loader: 'jshint-loader!coffee-loader'
+		},	// enable post compile jshint, rules/flags at the bottom
+		{ test: /\.html$/, loader: 'raw' },
+		{ test: RHLMatches, loader: 'react-hot!coffee-loader' },
+		{ test: /\.md$/, loader: 'raw!markdown' },
+		]
+	};
+
+	module.exports = [
+	{
+		name: 'browser',
 		// Entry point for static analyzer:
 		entry: [
 		'webpack-dev-server/client?http://localhost:3000',
@@ -54,7 +53,8 @@ var moduleCommon = {
 		},
 
 		plugins: [
-		new webpack.HotModuleReplacementPlugin()
+			new ExtractTextPlugin("main.css", {allChunks: true}),
+			new webpack.HotModuleReplacementPlugin()
 		],
 		jshint: {
 			bitwise: false,
@@ -82,6 +82,7 @@ var moduleCommon = {
 
 		// Entry point for static analyzer:
 		entry: {
+			// bundleCss: './scss/main.scss',
 			bundlePage: './dev/page.jsx',
 			bundleStaticPage: './dev/staticPage.jsx'
 		},
@@ -112,6 +113,9 @@ var moduleCommon = {
 			undef: true,
 			unused: 'vars'
 		},
+		plugins: [
+			new ExtractTextPlugin("main.css", {allChunks: true})
+		],
 
 		resolve: resolveCommon,
 
