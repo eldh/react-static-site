@@ -9,29 +9,22 @@ var resolveCommon = {
 	// Allow to omit extensions when requiring these files
 	extensions: ['', '.js', '.jsx', '.coffee']
 };
+var jsHintRules = {
+	bitwise: false,
+	boss: true,
+	curly: false,
+	eqnull: true,
+	expr: true,
+	newcap: false,
+	quotmark: false,
+	shadow: true,
+	strict: false,
+	sub: true,
+	undef: true,
+	unused: 'vars'
+}
 
-var moduleCommon = {
-	loaders: [
-		// Pass *.css files through css-loader and style-loader transforms
-		// { test: /\.css$/, loader: 'style!css' },
-		// Pass *.jsx files through jsx-loader transform
-		{ test: /\.scss$/, loader: ExtractTextPlugin.extract(
-			'style-loader',
-			'css-loader!autoprefixer-loader?{browsers:["last 2 version", "ie 10", "Android 4"]}!sass-loader'
-		) },
-		{ test: /\.jsx$/, loaders: ['react-hot', 'jsx'] },
-		{
-			test: /\.coffee$/,
-			exclude: RHLMatches,
-			loader: 'jshint-loader!coffee-loader'
-		},	// enable post compile jshint, rules/flags at the bottom
-		{ test: /\.html$/, loader: 'raw' },
-		{ test: RHLMatches, loader: 'react-hot!coffee-loader' },
-		{ test: /\.md$/, loader: 'raw!markdown' },
-		]
-	};
-
-	module.exports = [
+module.exports = [
 	{
 		name: 'browser',
 		// Entry point for static analyzer:
@@ -53,27 +46,35 @@ var moduleCommon = {
 		},
 
 		plugins: [
-			new ExtractTextPlugin("main.css", {allChunks: true}),
+			// new ExtractTextPlugin("main.css", {allChunks: true}),
 			new webpack.HotModuleReplacementPlugin()
 		],
-		jshint: {
-			bitwise: false,
-			boss: true,
-			curly: false,
-			eqnull: true,
-			expr: true,
-			newcap: false,
-			quotmark: false,
-			shadow: true,
-			strict: false,
-			sub: true,
-			undef: true,
-			unused: 'vars'
-		},
+		jshint: jsHintRules,
 
 		resolve: resolveCommon,
 
-		module: moduleCommon
+		module: {
+			loaders: [
+				// Pass *.css files through css-loader and style-loader transforms
+				// { test: /\.css$/, loader: 'style!css' },
+				// Pass *.jsx files through jsx-loader transform
+				{ test: /\.scss$/, loaders: [
+					'style-loader',
+					'css-loader',
+					'autoprefixer-loader?{browsers:["last 2 version", "ie 10", "Android 4"]}',
+					'sass-loader'
+				]},
+				{ test: /\.jsx$/, loaders: ['react-hot', 'jsx'] },
+				{
+					test: /\.coffee$/,
+					exclude: RHLMatches,
+					loader: 'jshint-loader!coffee-loader'
+				},	// enable post compile jshint, rules/flags at the bottom
+				{ test: /\.html$/, loader: 'raw' },
+				{ test: RHLMatches, loader: 'react-hot!coffee-loader' },
+				{ test: /\.md$/, loader: 'raw!markdown' },
+			]
+		}
 	},
 	{
 		name: 'server',
@@ -99,26 +100,24 @@ var moduleCommon = {
 
 			libraryTarget: "commonjs2"
 		},
-		jshint: {
-			bitwise: false,
-			boss: true,
-			curly: false,
-			eqnull: true,
-			expr: true,
-			newcap: false,
-			quotmark: false,
-			shadow: true,
-			strict: false,
-			sub: true,
-			undef: true,
-			unused: 'vars'
-		},
+		jshint: jsHintRules,
 		plugins: [
 			new ExtractTextPlugin("main.css", {allChunks: true})
 		],
 
 		resolve: resolveCommon,
 
-		module: moduleCommon
+		module: {
+			loaders: [
+				{ test: /\.scss$/, loader: ExtractTextPlugin.extract(
+					'style-loader',
+					'css-loader!autoprefixer-loader?{browsers:["last 2 version", "ie 10", "Android 4"]}!sass-loader'
+				) },
+				{ test: /\.jsx$/, loader: 'jsx' },
+				{ test: /\.coffee$/, loader: 'jshint-loader!coffee-loader' },
+				{ test: /\.html$/, loader: 'raw' },
+				{ test: /\.md$/, loader: 'raw!markdown' },
+			]
+		}
 	}
-	];
+];
