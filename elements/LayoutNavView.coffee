@@ -1,6 +1,6 @@
 React = require('react')
 Router = require('react-router')
- Paths = require('./PathsMixin');
+PathsMixin = require('./PathsMixin.coffee');
 Link = React.createFactory Router.Link
 _ = require 'lodash'
 
@@ -13,5 +13,4 @@ module.exports = React.createClass
 	mixins: [ PathsMixin ]
 
 	render: ->
-		nav {className: 'nav'},
-			_.map []
+		nav {className: 'nav'}, 'hey'

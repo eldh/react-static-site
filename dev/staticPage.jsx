@@ -1,7 +1,7 @@
 var React = require('react'),
   Router = require('react-router'),
   css = require('../scss/main.scss'),
-  Routes = require('../elements/Routes.jsx');
+  Routes = require('../elements/Routes.coffee');
 
 module.exports = function(url) {
   var html;

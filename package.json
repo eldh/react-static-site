@@ -4,7 +4,7 @@
   "description": "an experiment in generating a static site from react",
   "main": "index.js",
   "scripts": {
-    "build-static": "webpack --progress && node build && node publicServer",
+    "build-static": "webpack --progress && coffee _build.coffee && node publicServer",
     "start": "webpack --progress && node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +21,6 @@
     "react-hot-loader": "^1.0.4",
     "react-router": "^0.11.6",
     "style-loader": "^0.8.2",
-    "underscore": "^1.7.0",
     "webpack": "^1.4.15",
     "webpack-dev-server": "^1.7.0"
   },
@@ -30,9 +29,11 @@
     "coffee-loader": "^0.7.2",
     "coffee-script": "^1.9.0",
     "extract-text-webpack-plugin": "^0.3.8",
+    "fs": "0.0.2",
     "jshint": "^2.6.0",
     "jshint-loader": "^0.8.2",
     "lodash": "^3.2.0",
+    "q": "^1.1.2",
     "react-coffee-elements": "0.0.2",
     "sass-loader": "^0.4.0-beta.1"
   }

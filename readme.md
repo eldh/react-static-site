@@ -1,6 +1,4 @@
-After cloning this repo run `npm install && bower install` to install dependencies
-
-Note: dev/bundle*.js etc have been committed purely to have a complete example. they will be rewritten on run and would normally be git ignored.
+After cloning this repo run `npm install` to install dependencies
 
 ## Run in dev mode
 `npm start`

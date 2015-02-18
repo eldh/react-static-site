@@ -46,7 +46,6 @@ module.exports = [
 		},
 
 		plugins: [
-			// new ExtractTextPlugin("main.css", {allChunks: true}),
 			new webpack.HotModuleReplacementPlugin()
 		],
 		jshint: jsHintRules,

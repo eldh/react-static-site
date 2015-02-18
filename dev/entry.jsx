@@ -1,6 +1,6 @@
 var React = require('react'),
   Router = require('react-router'),
-  Routes = require('../elements/Routes.jsx');
+  Routes = require('../elements/Routes.coffee');
 
 require('../scss/main.scss');
 

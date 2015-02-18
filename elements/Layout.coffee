@@ -26,7 +26,7 @@ module.exports = React.createClass
 					rel: 'alternate'
 					type: 'application/atom+xml'
 					title: 'eldh.co blig'
-					href: 'atom.xml'
+					href: '/atom.xml'
 				if process.env.NODE_ENV is 'production'
 					link
 						rel: 'stylesheet'
