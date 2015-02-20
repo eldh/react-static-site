@@ -1,8 +1,6 @@
 _ = require 'lodash'
-postinfo = require './postinfo'
-
-posts =  postinfo.posts()
-pages =  postinfo.pages()
+posts = require './dev/posts'
+pages = require './dev/pages'
 
 module.exports =
 
@@ -17,34 +15,9 @@ module.exports =
 		pages
 
 	pageForPath: (path) ->
-		@pageReq() './' + pages[path].fileName
+		console.log 'pageForPath:::', path
+		require './pages/' + pages[path].fileName
 
 	postForPath: (path) ->
-		@postReq() './' + posts[path].md
-
-	pageReq: ->
-		require.context './pages', false, /^\.\/.*\.html$/
-
-	postReq: ->
-		require.context './posts', false, /^\.\/.*\.md$/
-
-
-# paths =
-# 	'/':
-# 		title: 'Home'
-# 		page: 'home.html'
-# 	'/about':
-# 		title: 'About'
-# 		page: 'about.html'
-# 	'/blog': title: 'Blog'
-# 	posts:
-# 		first_post:
-# 			title: 'My First Blog Post'
-# 			md: 'first_post.md'
-# 			published: '2015-01-01'
-# 			preview: 'Everyone has to start somewhere.'
-# 		second_post:
-# 			title: 'I Blogged Again'
-# 			md: 'blogged_again.md'
-# 			published: '2015-01-03'
-# 			preview: 'Oops I did it again.'
+		console.log 'postForPath:::', path
+		require './posts/' + posts[path].md

@@ -2,6 +2,10 @@ fs = require 'fs'
 _ = require 'lodash'
 # Wrap the io functions with ones that return promises.
 
+writeFiles = ->
+	fs.writeFileSync './dev/posts.js', "module.exports = #{JSON.stringify posts()};"
+	fs.writeFileSync './dev/pages.js', "module.exports = #{JSON.stringify pages()};"
+
 posts = ->
 	# dir = './react-static-site/posts'
 	dir = './posts'
@@ -41,6 +45,7 @@ pages = ->
 			}
 	obj
 module.exports = {
+	writeFiles
 	posts
 	pages
 }

@@ -1,0 +1,1 @@
+module.exports = {"blogged-again":{"url":"blogged-again","md":"2015-01-15-blogged_again.md","date":"2015-01-15","title":"Blogged again"},"first-post":{"url":"first-post","md":"2015-02-14-first_post.md","date":"2015-02-14","title":"First post"}};

@@ -5,7 +5,7 @@ Moment = React.createFactory require('../elements/Moment.jsx')
 Paths = require('../elements/PathsMixin')
 _ = require('lodash')
 
-{ div, li, br, ul, h1, blockquote } = require 'react-coffee-elements'
+{ div, li, br, ul, h2, h1, blockquote } = require 'react-coffee-elements'
 
 Blog = React.createClass
 	displayName: 'Blog'
@@ -31,7 +31,7 @@ Blog = React.createClass
 			ul style: ulStyle,
 				_.map @getAllPosts(), (post, key) =>
 					li key: key,
-						div { style: titleStyle },
+						h1 { },
 							Link
 								key: key
 								to: '/blog/' + key

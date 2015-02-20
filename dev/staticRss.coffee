@@ -3,7 +3,7 @@ moment = require('moment')
 _ = require 'lodash'
 
 module.exports = (page) ->
-	t 'feed', {xmlns: "http://www.w3.org/2005/Atom"}, [
+	t 'feed', {xmlns: 'http://www.w3.org/2005/Atom'}, [
 		t 'title', {}, 'eldh.co'
 		t 'link', {href: 'http://www.eldh.co/atom.xml', rel: 'self'}, ' '
 		t 'link', {href: 'http://www.eldh.co'}, ' '
@@ -13,7 +13,7 @@ module.exports = (page) ->
 			t 'name', {}, 'Andreas Eldh'
 			t 'email', {}, 'andreas.eldh@gmail.com'
 		]
-		_.map paths.allPaths().posts, (post, name) =>
+		_.map paths.getAllPosts(), (post, name) ->
 			t 'entry', {}, [
 				t 'title', {}, post.title
 				t 'link', href: 'http://www.eldh.co/' + name, ''

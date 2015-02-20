@@ -20,11 +20,9 @@ Routes =
 			path: '/blog/:post'
 			handler: Post
 		_.map paths.allPages(), (page, key) ->
-			handler = require '../pages/' + page.fileName
-			console.log 'key: ', key, page.fileName, handler
 			Route
 				name: '/' + page.name
-				handler: handler
+				handler: require '../pages/' + page.fileName
 
 
 module.exports = Routes

@@ -8,7 +8,7 @@ PathsMixin =
 		getCurrentParams: React.PropTypes.func.isRequired
 
 	getAllPosts: ->
-		paths.allPosts()
+		allPosts
 
 	getPathMeta: (key) ->
 		path = @context.getCurrentPathname()
@@ -30,6 +30,7 @@ PathsMixin =
 		paths.postForPath path
 
 	getPreviewForPost: (post) ->
+		console.log 'POSTPOST!!!: ', post
 		postMeta = paths.allPosts()[post]
 		if postMeta.preview
 			return postMeta.preview

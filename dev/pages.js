@@ -1,0 +1,1 @@
+module.exports = {"blog":{"name":"blog","url":"blog","fileName":"Blog.coffee","title":"Blog"},"page":{"name":"page","url":"page","fileName":"Page.coffee","title":"Page"},"thing":{"name":"thing","url":"thing","fileName":"Thing.coffee","title":"Thing"}};
