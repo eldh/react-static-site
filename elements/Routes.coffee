@@ -12,7 +12,7 @@ paths = require('../paths')
 Routes =
 	Route
 		name: 'home'
-		path: '/'
+		# path: '/'
 		handler: Layout
 	,
 		Route
@@ -21,9 +21,9 @@ Routes =
 			handler: Post
 		_.map paths.allPages(), (page, key) ->
 			handler = require '../pages/' + page.fileName
-			console.log 'key: ', key, page.fileName, handler
+			url = if page.name is 'index' then '/' else '/' + page.url  + '/?'
 			Route
-				name: '/' + page.name
+				name: url
 				handler: handler
 
 

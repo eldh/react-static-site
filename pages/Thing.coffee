@@ -16,6 +16,6 @@ Index = React.createClass
 	]
 
 	render: ->
-		div {}, 'home'
+		div {}, 'Thingy!'
 
 module.exports = Index

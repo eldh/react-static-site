@@ -12,8 +12,8 @@ dev/bundlePage.js
 
 dev/bundleStaticPage.js
 
-public/assets/main.css
-
 dev/main.css
 
 dev/bundleStaticRss.js
+
+public

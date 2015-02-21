@@ -31,7 +31,7 @@ module.exports = [
 		entry: [
 		'webpack-dev-server/client?http://localhost:3000',
 		'webpack/hot/dev-server',
-		'./dev/entry.jsx'
+		'./dev/entry.coffee'
 		],
 
 		output: {

@@ -16,6 +16,6 @@ Page = React.createClass
 	]
 
 	render: ->
-		div {}, 'home'
+		div {}, 'Page thingy'
 
 module.exports = Page

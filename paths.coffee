@@ -1,8 +1,8 @@
 _ = require 'lodash'
-postinfo = require './postinfo'
+postinfo = require './dev/buildPaths.coffee'
 
-posts =  postinfo.posts()
-pages =  postinfo.pages()
+posts = postinfo.posts
+pages = postinfo.pages
 
 module.exports =
 

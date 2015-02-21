@@ -7,15 +7,15 @@ _ = require('lodash')
 
 { div, li, br, ul, h1, blockquote } = require 'react-coffee-elements'
 
-Page = React.createClass
-  displayName: 'Page'
+Index = React.createClass
+	displayName: 'Index'
 
-  mixins: [
-    Router.State
-    Paths
-  ]
+	mixins: [
+		Router.State
+		Paths
+	]
 
-  render: ->
-    div {}, 'home'
+	render: ->
+		div {}, 'Index wee'
 
-module.exports = Page
+module.exports = Index
